@@ -3,16 +3,15 @@ package main;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class Scheduler {
-    //handles pause, thread creation, thread execution, timing, etc
+    //handles thread creation, thread execution, timing, etc
 
     PriorityBlockingQueue<CPU_Process> processes;
     CPU1 cpu1;
     CPU2 cpu2;
+    Thread thread1;
+    Thread thread2;
     int time_unit;
-    class Control {
-        public volatile boolean flag = false;
-    }
-    final Control control = new Control();
+    int flag;
     class CPU1 implements Runnable {
         private CPU_Process currentproc;
         private int stime;
@@ -46,13 +45,7 @@ public class Scheduler {
                 }
                 else if(stime != 0) {
                     //if time remaining
-
-                    try {
-                        Scheduler.this.wait(time_unit);
-                        stime--;
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
+                    stime--;
 
                 }
                 else if(stime == 0) {
@@ -98,14 +91,7 @@ public class Scheduler {
             }
             else if(stime != 0) {
                 //if time remaining
-
-                try {
-                    Scheduler.this.wait(time_unit);
-                    stime--;
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
+                stime--;
             }
             else if(stime == 0) {
                 //no time remaining
@@ -121,36 +107,51 @@ public class Scheduler {
         //constructor.
         processes = processes_in;
         time_unit = time_units; //var names be hard
-
+        cpu1 = new CPU1();
+        cpu2 = new CPU2();
+        flag = 0; //if running, 1. if not, 0
+        thread1 = new Thread(cpu1);
+        thread2 = new Thread(cpu2);
 
     }
+    public void run() {
+        //tick based execution
+        if(flag == 0) {
 
-    public int start() {
-        //starts execution. on successful start returns 0.
-        //if system already running, returns 1.
-        if(control.flag == true)
-        {
-            return 1;
+            thread1.start();
+            thread2.start();
+
         }
         else
         {
-            control.flag = true;
-            return 0;
+            //basically do nothing
         }
 
+    }
+    public void stop() {
+        //stop thing
+        if(flag == 1) {
+            try {
+                thread1.join();
+                thread2.join();
 
-    }
-    public int stop() {
-        //stops execution. on successful stop returns 0. else, 1.
-        if(control.flag == false)
-        {
-            return 1;
+            }
+            catch (Exception e) {
+                //do the thing
+                e.printStackTrace();
+
+            }
         }
-        else
-        {
-            control.flag = false;
-            return 0;
+        else {
+            //do nothing
+
         }
     }
+
+
+
+
+
+
 
 }
