@@ -3,12 +3,10 @@ package main;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 import java.util.Scanner;
 
 public class Parser {
-    //FileReader input = new FileReader(new File("test123.txt"));
+    //class to handle getting the information from file.
     int A_T;
     String id;
     double S_T;
