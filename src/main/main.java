@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.PriorityQueue;
 
 public class main {
-    public static void main(String[] args){
+    public static void main(String[] args) throws InterruptedException {
         //main function
         int stat = 0;
         String file_name = "C:\\dev\\test.txt";
@@ -18,6 +18,7 @@ public class main {
         //make it into a queue
         PriorityQueue<CPU_Process> processQueue = new PriorityQueue<CPU_Process>(processes);
         Scheduler scheduler = new Scheduler(2, processQueue);
+
 
 
 
