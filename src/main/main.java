@@ -1,6 +1,6 @@
 package main;
 import java.util.ArrayList;
-import java.util.PriorityQueue;
+import java.util.concurrent.PriorityBlockingQueue;
 
 public class main {
     public static void main(String[] args) throws InterruptedException {
@@ -16,8 +16,9 @@ public class main {
         }
         //processes are in the thing
         //make it into a queue
-        PriorityQueue<CPU_Process> processQueue = new PriorityQueue<CPU_Process>(processes);
-        Scheduler scheduler = new Scheduler(2, processQueue);
+        int times = 0;
+        PriorityBlockingQueue<CPU_Process> processQueue = new PriorityBlockingQueue<CPU_Process>(processes);
+        Scheduler scheduler = new Scheduler(times, processQueue);
 
 
 
