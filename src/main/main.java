@@ -17,6 +17,7 @@ public class main {
         //processes are in the thing
         //make it into a queue
         PriorityQueue<CPU_Process> processQueue = new PriorityQueue<CPU_Process>(processes);
+        Scheduler scheduler = new Scheduler(2, processQueue);
 
 
 

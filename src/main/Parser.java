@@ -11,11 +11,9 @@ public class Parser {
     String id;
     double S_T;
     double P;
-
     ArrayList<CPU_Process> parse(String filepath) {
         Scanner input;
         ArrayList<CPU_Process> processes = new ArrayList<CPU_Process>();
-
         try {
             input = new Scanner(new File(filepath));
             input.useDelimiter(",|\n");
@@ -25,10 +23,7 @@ public class Parser {
                     id = input.next();
                     S_T = Double.valueOf(input.next().substring(1));
                     P = Double.valueOf(input.next().substring(1));
-
                     processes.add(new CPU_Process(A_T, id, S_T, P));
-
-
                 }
             }
         } catch (FileNotFoundException e) {
@@ -36,7 +31,5 @@ public class Parser {
             return null;
         }
        return processes;
-
-
     }
 }

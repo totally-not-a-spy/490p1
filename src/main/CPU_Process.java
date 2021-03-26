@@ -21,4 +21,19 @@ public class CPU_Process {
 
     }
 
+    public int getArrival_time() {
+        return arrival_time;
+    }
+
+    public String getProcess_id() {
+        return process_id;
+    }
+
+    public int getService_time() {
+        return service_time;
+    }
+
+    public int getPriority() {
+        return priority;
+    }
 }
