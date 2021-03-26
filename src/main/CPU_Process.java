@@ -1,6 +1,6 @@
 package main;
 
-public class CPU_Process {
+public class CPU_Process implements Comparable<CPU_Process> {
     //process class
     int arrival_time;
     String process_id;
@@ -20,6 +20,11 @@ public class CPU_Process {
         return s;
 
     }
+    public int compareTo(CPU_Process o) {
+        return 0; //in the future, this will be setup to handle priority
+    }
+
+
 
     public int getArrival_time() {
         return arrival_time;

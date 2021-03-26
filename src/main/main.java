@@ -17,8 +17,9 @@ public class main {
         //processes are in the thing
         //make it into a queue
         int times = 0;
-        PriorityBlockingQueue<CPU_Process> processQueue = new PriorityBlockingQueue<CPU_Process>(processes);
+        PriorityBlockingQueue<CPU_Process> processQueue = new PriorityBlockingQueue(processes);
         Scheduler scheduler = new Scheduler(times, processQueue);
+        scheduler.run();
 
 
 

@@ -10,6 +10,8 @@ public class Scheduler {
     CPU2 cpu2;
     Thread thread1;
     Thread thread2;
+    CPU_Process proc1; //used for timing info
+    CPU_Process proc2; //used for timing info
     int time_unit;
     int flag;
     class CPU1 implements Runnable {
@@ -122,10 +124,13 @@ public class Scheduler {
             thread2.start();
 
         }
-        else
-        {
-            //basically do nothing
+        else {
+            proc1 = cpu1.getCurrentproc();
+            proc2 = cpu2.getCurrentproc();
+
         }
+
+
 
     }
     public void stop() {
