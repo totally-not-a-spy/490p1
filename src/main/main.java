@@ -1,4 +1,6 @@
 package main;
+
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.concurrent.PriorityBlockingQueue;
 
@@ -19,8 +21,14 @@ public class main {
         int times = 0;
         PriorityBlockingQueue<CPU_Process> processQueue = new PriorityBlockingQueue(processes);
         Scheduler scheduler = new Scheduler(times, processQueue);
-        scheduler.run();
 
+
+        MainView screen = new MainView();
+        JFrame window = Window.createWindow();  // create the window JFrame
+        screen.setPreferredSize(window.getSize());
+        window.add(screen);
+        window.revalidate();
+        window.repaint();
 
 
 
