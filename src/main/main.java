@@ -23,12 +23,6 @@ public class main {
         Scheduler scheduler = new Scheduler(times, processQueue);
 
 
-        MainView screen = new MainView();
-        JFrame window = Window.createWindow();  // create the window JFrame
-        screen.setPreferredSize(window.getSize());
-        window.add(screen);
-        window.revalidate();
-        window.repaint();
 
 
 
